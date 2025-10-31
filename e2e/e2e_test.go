@@ -93,6 +93,10 @@ func TestConvert(t *testing.T) {
 			args: []string{"--bootloader=grub", "--luks-password=root"},
 			efi:  true,
 		},
+		{
+			name: "cloud-init",
+			args: []string{"--cloud-init"},
+		},
 	}
 
 	var testImgs []img
