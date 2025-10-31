@@ -25,7 +25,7 @@ var (
 	Arch      = fmt.Sprintf("%s/%s", runtime.GOOS, runtime.GOARCH)
 	Version   = ""
 	BuildDate = ""
-	Image     = "linkacloud/d2vm"
+	Image     = "ghcr.io/bracketdevelopers/d2vm"
 )
 
 func init() {

@@ -132,7 +132,7 @@ func RunD2VM(ctx context.Context, image, version, in, out, cmd string, args ...s
 		out = pwd
 	}
 	if image == "" {
-		image = "linkacloud/d2vm"
+		image = "ghcr.io/bracketdevelopers/d2vm"
 	}
 	if version == "" {
 		version = "latest"
