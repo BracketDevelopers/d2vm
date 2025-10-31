@@ -69,15 +69,11 @@ func TestConfig(t *testing.T) {
 		config Config
 	}{
 		{
-			image:  "ubuntu:18.04",
-			config: configDebian,
-		},
-		{
-			image:  "ubuntu:20.04",
+			image:  "ubuntu:22.04",
 			config: configUbuntu,
 		},
 		{
-			image:  "ubuntu:22.04",
+			image:  "ubuntu:24.04",
 			config: configUbuntu,
 		},
 		{
@@ -85,15 +81,11 @@ func TestConfig(t *testing.T) {
 			config: configUbuntu,
 		},
 		{
-			image:  "debian:9",
-			config: configDebian,
-		},
-		{
-			image:  "debian:10",
-			config: configDebian,
-		},
-		{
 			image:  "debian:11",
+			config: configDebian,
+		},
+		{
+			image:  "debian:12",
 			config: configDebian,
 		},
 		{
@@ -105,7 +97,7 @@ func TestConfig(t *testing.T) {
 			config: configDebian,
 		},
 		{
-			image:  "alpine:3.16",
+			image:  "alpine:3.22",
 			config: configAlpine,
 		},
 		{
