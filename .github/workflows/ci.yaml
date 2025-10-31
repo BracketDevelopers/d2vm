@@ -107,11 +107,11 @@ jobs:
     strategy:
       matrix:
         image:
-        - alpine:3.17
-        - ubuntu:20.04
+        - alpine:3.22
         - ubuntu:22.04
-        - debian:10
+        - ubuntu:24.04
         - debian:11
+        - debian:12
         - centos:8
         - quay.io/centos/centos:stream9
     steps:
