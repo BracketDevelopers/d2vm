@@ -66,6 +66,7 @@ type Dockerfile struct {
 	Release        OSRelease
 	NetworkManager NetworkManager
 	Luks           bool
+	CloudInit      bool
 	GrubBIOS       bool
 	GrubEFI        bool
 	tmpl           *template.Template
@@ -79,8 +80,17 @@ func (d Dockerfile) Render(w io.Writer) error {
 	return d.tmpl.Execute(w, d)
 }
 
-func NewDockerfile(release OSRelease, img, password string, networkManager NetworkManager, luks, grubBIOS, grubEFI bool) (Dockerfile, error) {
-	d := Dockerfile{Release: release, Image: img, Password: password, NetworkManager: networkManager, Luks: luks, GrubBIOS: grubBIOS, GrubEFI: grubEFI}
+func NewDockerfile(release OSRelease, img, password string, networkManager NetworkManager, cloudInit, luks, grubBIOS, grubEFI bool) (Dockerfile, error) {
+	d := Dockerfile{
+		Release:        release,
+		Image:          img,
+		Password:       password,
+		NetworkManager: networkManager,
+		CloudInit:      cloudInit,
+		Luks:           luks,
+		GrubBIOS:       grubBIOS,
+		GrubEFI:        grubEFI,
+	}
 	var net NetworkManager
 	switch release.ID {
 	case ReleaseDebian:

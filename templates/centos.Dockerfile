@@ -16,13 +16,16 @@ RUN yum install -y \
     kernel \
     systemd \
     NetworkManager \
+    {{- if .CloudInit }}
+cloud-init \
+    {{- end }}
 {{- if .GrubBIOS }}
-    grub2 \
-{{- end }}
+grub2 \
+    {{- end }}
 {{- if .GrubEFI }}
-    grub2 grub2-efi-x64 grub2-efi-x64-modules \
-{{- end }}
-    e2fsprogs \
+grub2 grub2-efi-x64 grub2-efi-x64-modules \
+    {{- end }}
+e2fsprogs \
     sudo && \
     systemctl enable NetworkManager && \
     systemctl unmask systemd-remount-fs.service && \
@@ -40,8 +43,8 @@ RUN dracut --no-hostonly --regenerate-all --force
 
 {{- if not .Grub }}
 RUN cd /boot && \
-        mv $(find {{ if le $version 8 }}.{{ else }}/{{ end }} -name 'vmlinuz*') /boot/vmlinuz && \
-        mv $(find . -name 'initramfs-*.img') /boot/initrd.img
+    mv $(find {{ if le $version 8 }}.{{ else }}/{{ end }} -name 'vmlinuz*') /boot/vmlinuz && \
+    mv $(find . -name 'initramfs-*.img') /boot/initrd.img
 {{- end }}
 
 RUN yum clean all && \

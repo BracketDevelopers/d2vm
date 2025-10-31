@@ -20,6 +20,9 @@ RUN ARCH="$([ "$(uname -m)" = "x86_64" ] && echo amd64 || echo arm64)"; \
   grub-efi-${ARCH}-bin \
 {{- end }}
   dbus \
+{{- if .CloudInit }}
+  cloud-init \
+{{- end }}
   isc-dhcp-client \
   iproute2 \
   iputils-ping && \

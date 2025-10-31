@@ -30,6 +30,7 @@ type convertOptions struct {
 	bootFS    BootFS
 
 	luksPassword string
+	cloudInit    bool
 
 	keepCache bool
 	platform  string
@@ -107,6 +108,12 @@ func WithBootFS(bootFS BootFS) ConvertOption {
 func WithLuksPassword(password string) ConvertOption {
 	return func(o *convertOptions) {
 		o.luksPassword = password
+	}
+}
+
+func WithCloudInit(enable bool) ConvertOption {
+	return func(o *convertOptions) {
+		o.cloudInit = enable
 	}
 }
 
